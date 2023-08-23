@@ -3,6 +3,7 @@ import { useEthers } from '@usedapp/core';
 
 import styles from './styles';
 import {uniswapLogo} from './assets';
+import { Exchange, Loader, WalletButton } from "./components";
 
 const App = () => {
   const { account} = useEthers();
@@ -16,7 +17,7 @@ const App = () => {
             alt="uniswap-logo"
             className="w-16 h-16 object-contain"
           />
-          WalletButton
+          <WalletButton />
         </header>
 
         <div className={styles.exchangeContainer}>
@@ -30,9 +31,9 @@ const App = () => {
               <div className={styles.exchange}>
                 {account ? (
                   poolIsLoading ? (
-                    <Loader />
+                    <Loader title="Loading pools, please wait!" />
                   ) : <Exchange />
-                ) : <Loader />}
+                ) : <Loader title="Please connect your wallet" />}
               </div>
               <div className="blue_gradient" />                
             </div>
